@@ -150,7 +150,7 @@ public class DisjunctiveTerm implements Comparable<DisjunctiveTerm>{
     @Override
     public int compareTo(DisjunctiveTerm o) {
 
-        return o.size() - this.size();
+        return this.size() - o.size();
     }
 
 }

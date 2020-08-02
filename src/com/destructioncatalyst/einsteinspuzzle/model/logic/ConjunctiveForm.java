@@ -49,18 +49,16 @@ public class ConjunctiveForm {
 
         sort();
 
-        while (terms.size() > 1){
+        DisjunctiveTerm res = get(0);
 
-            add(get(size() - 1).conjunction(get(size() - 2)));
+        for (int i = 1; i < size(); i++) {
 
-            pop(terms.size() - 2);
-            pop(terms.size() - 2);
-            //System.out.println(Rule.getInstanceCount());
+            res = res.conjunction(get(i));
         }
 
         System.gc();
 
-        return terms.get(0);
+        return res;
     }
 
 
