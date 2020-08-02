@@ -4,23 +4,24 @@ public enum EPanels {
 
     START{
         public EPanels next(){
-            instance = FEATURE;
+            //instance = FEATURE;
             return FEATURE;
         }
     },
     FEATURE{
         public EPanels next(){
-            instance = RULE;
+            //instance = RULE;
             return RULE;
         }
     },
     RULE{
         public EPanels next(){
-            instance = RULE;
+            //instance = RULE;
             return RULE;
         }
     };
 
+    /*
     private static EPanels instance = null;
 
     public static EPanels getInstance() {
@@ -30,5 +31,7 @@ public enum EPanels {
         return instance;
     }
 
+
+     */
     public abstract EPanels next();
 }

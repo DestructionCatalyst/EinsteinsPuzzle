@@ -34,7 +34,7 @@
               <verticalTextPosition value="1"/>
             </properties>
           </component>
-          <component id="993be" class="javax.swing.JTextField" binding="dimensionEnterField">
+          <component id="993be" class="javax.swing.JTextField" binding="dimensionEnterField" custom-create="true">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -115,7 +115,7 @@
               <verticalTextPosition value="1"/>
             </properties>
           </component>
-          <component id="c971d" class="javax.swing.JTextField" binding="numberOfElementsEnterField">
+          <component id="c971d" class="javax.swing.JTextField" binding="numberOfElementsEnterField" custom-create="true">
             <constraints>
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>

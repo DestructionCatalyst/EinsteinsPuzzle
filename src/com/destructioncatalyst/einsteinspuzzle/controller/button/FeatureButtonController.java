@@ -1,25 +1,27 @@
 package com.destructioncatalyst.einsteinspuzzle.controller.button;
 
 import com.destructioncatalyst.einsteinspuzzle.model.conversion.FeatureConverter;
-import com.destructioncatalyst.einsteinspuzzle.view.tables.AttributeTable;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IAttributeTable;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 
-public class FeatureButtonController extends BasicButtonController{
+public class FeatureButtonController extends BasicNextButtonController {
 
-    AttributeTable table;
+    IAttributeTable table;
 
-    public FeatureButtonController(AttributeTable tab, JFrame frame){
+    public FeatureButtonController(IAttributeTable tab, IPanelContainer frame){
 
         table = tab;
         mainFrame = frame;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed() {
 
         FeatureConverter converter = new FeatureConverter(table.firstColumn(), table.getContent());
+
+        System.out.println(converter.toString());
+
         solutionController.addFeatureConverter(converter);
 
         //TODO go to next panel

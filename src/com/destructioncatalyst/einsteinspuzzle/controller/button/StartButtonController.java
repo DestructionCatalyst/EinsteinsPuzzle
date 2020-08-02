@@ -1,73 +1,67 @@
 package com.destructioncatalyst.einsteinspuzzle.controller.button;
 
-import com.destructioncatalyst.einsteinspuzzle.view.FeaturePanelGenerator;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IMessagePopup;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.ITextInput;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
+public class StartButtonController extends BasicNextButtonController {
 
-public class StartButtonController extends BasicButtonController{
+    private final ITextInput dimension;
+    private final ITextInput numberOfElements;
+    private final IMessagePopup messagePopup;
 
-    private final JTextField dimension;
-    private final JTextField numberOfElements;
-
-    public StartButtonController(JTextField dimensionTextField,
-                                 JTextField numberOfElementsTextField,
-                                 JFrame mainFrame)
+    public StartButtonController(ITextInput dimensionTextField,
+                                 ITextInput numberOfElementsTextField,
+                                 IPanelContainer mainFrame, IMessagePopup messagePopup)
     {
 
         dimension = dimensionTextField;
         numberOfElements = numberOfElementsTextField;
+        this.messagePopup = messagePopup;
         this.mainFrame = mainFrame;
 
     }
 
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed() {
         int dim;
         int num;
 
-        dim = parse(dimension);
+        dim = parse(dimension, false);
         num = parse(numberOfElements, false, (dim > -1));
 
-        if((dim + num) > 0){
+        if((dim > 0) && (num > 0)){
 
             solutionController.setDimensions(dim, num);
-            nextPanel(new FeaturePanelGenerator(
-                    solutionController.getDimension(),
-                    solutionController.getObjectCount(),
-                    mainFrame
-                    )
-            );
+            nextPanel();
 
         }
 
     }
 
 
-    private int parse(JTextField text) {
+    private int parse(ITextInput text) {
         return parse(text, true);
     }
 
-    private int parse(JTextField text, boolean allowsZero) {
+    private int parse(ITextInput text, boolean allowsZero) {
         return parse(text, allowsZero, true);
     }
 
-    private int parse(JTextField text, boolean allowsZero, boolean showError){
+    private int parse(ITextInput text, boolean allowsZero, boolean showError){
         int res;
         try {
             res = Integer.parseInt(text.getText());
             if ((res < 0) || (!allowsZero && (res == 0))) throw new NumberFormatException();
-            text.setBackground(Color.WHITE);
+            text.setBackground(255, 255, 255);
         }
         catch (NumberFormatException e){
             if(showError)
-                JOptionPane.showMessageDialog(null,
+                messagePopup.showError(
                         "Некорректный ввод!",
-                        "Ошибка!",
-                        JOptionPane.ERROR_MESSAGE);
-            text.setBackground(new Color(255,60, 60));
+                        "Ошибка!");
+            text.setBackground(255,60, 60);
             return -1;
         }
         return res;

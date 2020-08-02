@@ -1,11 +1,15 @@
 package com.destructioncatalyst.einsteinspuzzle.view;
 
-import com.destructioncatalyst.einsteinspuzzle.view.tables.AttributeTable;
+import com.destructioncatalyst.einsteinspuzzle.controller.button.FeatureButtonController;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IAttributeTable;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
+import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.IPanelGenerator;
+import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables.AttributeTable;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class FeaturePanelGenerator implements PanelGenerator{
+public class FeaturePanelGenerator implements IPanelGenerator {
 
     private JPanel panel;
     private JLabel insertAttribLabel;
@@ -13,10 +17,10 @@ public class FeaturePanelGenerator implements PanelGenerator{
     private JButton nextButton;
     private JTable table1;
     private JButton helpButton;
-    private int dimension;
-    private int objectCount;
+    private final int dimension;
+    private final int objectCount;
 
-    public FeaturePanelGenerator(int dimension, int objectCount, JFrame containerFrame) {
+    public FeaturePanelGenerator(int dimension, int objectCount, IPanelContainer containerFrame) {
 
         this.dimension = dimension;
         this.objectCount = objectCount;
@@ -26,7 +30,9 @@ public class FeaturePanelGenerator implements PanelGenerator{
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
         scrollPane.getHorizontalScrollBar().setUnitIncrement(10);
 
-        scrollPane.setVisible(true);
+        nextButton.addActionListener(e ->
+                new FeatureButtonController((IAttributeTable) table1, containerFrame).actionPerformed()
+        );
 
     }
 

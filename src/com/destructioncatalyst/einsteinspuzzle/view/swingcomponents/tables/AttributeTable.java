@@ -1,11 +1,12 @@
-package com.destructioncatalyst.einsteinspuzzle.view.tables;
+package com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables;
+
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IAttributeTable;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import java.util.ArrayList;
 
-public class AttributeTable extends JTable {
+public class AttributeTable extends JTable implements IAttributeTable {
 
 
     public AttributeTable(DefaultTableModel tableModel){
