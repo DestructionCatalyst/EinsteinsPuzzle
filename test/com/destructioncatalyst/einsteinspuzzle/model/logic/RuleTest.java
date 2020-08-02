@@ -1,11 +1,10 @@
-package com.destructioncatalyst.einsteinspuzzle.model;
+package com.destructioncatalyst.einsteinspuzzle.model.logic;
 
-import com.destructioncatalyst.einsteinspuzzle.model.logic.DisjunctiveTerm;
-import com.destructioncatalyst.einsteinspuzzle.model.logic.Rule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class RuleTest {
 
@@ -131,7 +130,7 @@ class RuleTest {
                 {0, 0, 0, 0},
                 {0, 0, 4, 0},
                 {0, 1, 0, 1}};
-        Rule controversial = new Rule(3, 4, d);
+        RawRule controversial = new RawRule(3, 4, d);
 
         DisjunctiveTerm generated = controversial.splitControversial();
 
@@ -155,4 +154,6 @@ class RuleTest {
 
         assertEquals(expected, generated);
     }
+
+
 }

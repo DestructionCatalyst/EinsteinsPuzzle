@@ -1,11 +1,9 @@
-package com.destructioncatalyst.einsteinspuzzle.model;
+package com.destructioncatalyst.einsteinspuzzle.model.logic;
 
-import com.destructioncatalyst.einsteinspuzzle.model.logic.DisjunctiveTerm;
-import com.destructioncatalyst.einsteinspuzzle.model.logic.Rule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DisjunctiveTermTest {
 

@@ -1,56 +1,25 @@
 package com.destructioncatalyst.einsteinspuzzle.model.logic;
 
-import com.destructioncatalyst.einsteinspuzzle.exceptions.MultipleRepeatException;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-
-public class Rule {
+public class Rule extends BasicRule{
 
     private static int instanceCount = 0;
 
-    private final int dimension;
-    private final int objectCount;
-
-    private final byte[][] data;
-
     public Rule(int dim, int objCount){
-
-        dimension = dim;
-        objectCount = objCount;
-
-        data = new byte[dimension][objectCount];
-
-        for (int i = 0; i < dimension; i++) {
-            for (int j = 0; j < objectCount; j++) {
-                data[i][j] = 0;
-            }
-        }
+        super(dim, objCount);
 
         instanceCount++;
     }
 
-    public Rule(int dim, int objCount, byte[][] rule){
-
-        if(dim <= 0)
-            throw new IllegalArgumentException("dim = " + dim + " <= 0");
-
-        if (objCount <= 0)
-            throw new IllegalArgumentException("objCount = " + objCount + " <= 0");
-
-        dimension = dim;
-        objectCount = objCount;
-
-        //if ((rule.length / dimension) == objectCount)
-            data = rule;
-        //else throw new ArrayIndexOutOfBoundsException("Mismatch of array size and size parameters");
+    protected Rule(int dim, int objCount, byte[][] rule){
+        super(dim, objCount, rule);
 
         instanceCount++;
     }
 
-    private boolean checkSize(Rule r){
-        return ((dimension == r.dimension) && (objectCount == r.objectCount));
+    protected Rule(RawRule rawRule){
+        super(rawRule.dimension, rawRule.objectCount, rawRule.data);
+
+        instanceCount++;
     }
 
     public Rule conjunction(Rule r){
@@ -75,30 +44,6 @@ public class Rule {
 
         return res.checkRepeat() ? null : res;
     }
-
-    private boolean checkRepeat(){
-
-        boolean[] used = new boolean[objectCount];
-
-        for (int i = 0; i < dimension; i++) {
-
-            Arrays.fill(used, false);
-
-            for (int j = 0; j < objectCount; j++) {
-                if(data[i][j] != 0){
-
-                    if(used[data[i][j] - 1])
-                        return true;
-                    used[data[i][j] - 1] = true;
-                }
-            }
-        }
-
-        return false;
-
-    }
-
-
 
     public DisjunctiveTerm generateShifts(){
 
@@ -150,9 +95,7 @@ public class Rule {
         byte[][] newData = new byte[dimension][objectCount];
 
         for (int i = 0; i < dimension; i++) {
-            for (int j = 0; j < objectCount - 1; j++) {
-                newData[i][j] = data[i][j + 1];
-            }
+            if (objectCount - 1 >= 0) System.arraycopy(data[i], 1, newData[i], 0, objectCount - 1);
         }
         for (int i = 0; i < dimension; i++) {
             newData[i][objectCount - 1] = 0;
@@ -165,9 +108,7 @@ public class Rule {
         byte[][] newData = new byte[dimension][objectCount];
 
         for (int i = 0; i < dimension; i++) {
-            for (int j = 1; j < objectCount; j++) {
-                newData[i][j] = data[i][j - 1];
-            }
+            if (objectCount - 1 >= 0) System.arraycopy(data[i], 0, newData[i], 1, objectCount - 1);
         }
         for (int i = 0; i < dimension; i++) {
             newData[i][0] = 0;
@@ -176,17 +117,7 @@ public class Rule {
         return new Rule(dimension, objectCount, newData);
     }
 
-    public boolean isEmpty(){
-
-        for (int i = 0; i < dimension; i++) {
-            for (int j = 0; j < objectCount; j++) {
-                if (data[i][j] != 0)
-                    return false;
-            }
-        }
-        return true;
-
-    }
+    /*
 
     private int findRepeatedLine(){
 
@@ -213,7 +144,7 @@ public class Rule {
         }
 
         return res;
-    }
+    }//R
 
     private ArrayList<Integer> findRepeatIndexes(int line){
 
@@ -234,7 +165,7 @@ public class Rule {
         }
 
         return res;
-    }
+    }//R
 
     public DisjunctiveTerm splitControversial(){
 
@@ -257,7 +188,7 @@ public class Rule {
 
 
         return res;
-    }
+    }//R
 
     private Rule copyExceptOfControversial(int targetLine, int index){
 
@@ -275,48 +206,14 @@ public class Rule {
         }
 
         return new Rule(dimension, objectCount, newData);
-    }
+    }//R
 
     public DisjunctiveTerm prepare(){
         return this.splitControversial().generateShifts();
-    }
+    }//R
 
 
-
-    public int getDimension() {
-        return dimension;
-    }
-
-    public int getObjectCount() {
-        return objectCount;
-    }
-
-    @Override
-    public String toString() {
-        return "Rule{" +
-                "dimension=" + dimension +
-                ", objectCount=" + objectCount +
-                ", map=" + Arrays.deepToString(data) +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Rule rule = (Rule) o;
-        return dimension == rule.dimension &&
-                objectCount == rule.objectCount &&
-                Arrays.deepEquals(data, rule.data);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(dimension, objectCount);
-        result = 31 * result + Arrays.deepHashCode(data);
-        return result;
-    }
-
+     */
     public static int getInstanceCount() {
         return instanceCount;
     }

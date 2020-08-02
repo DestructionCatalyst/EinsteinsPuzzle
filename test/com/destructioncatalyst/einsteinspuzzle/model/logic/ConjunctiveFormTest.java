@@ -1,11 +1,8 @@
-package com.destructioncatalyst.einsteinspuzzle.model;
+package com.destructioncatalyst.einsteinspuzzle.model.logic;
 
-import com.destructioncatalyst.einsteinspuzzle.model.logic.ConjunctiveForm;
-import com.destructioncatalyst.einsteinspuzzle.model.logic.DisjunctiveTerm;
-import com.destructioncatalyst.einsteinspuzzle.model.logic.Rule;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ConjunctiveFormTest {
 
@@ -22,22 +19,22 @@ class ConjunctiveFormTest {
         byte[][] b = {
                 {0, 4, 0, 0},
                 {2, 0, 2, 0}};
-        form.add(new Rule(2, 4, b).prepare());
+        form.add(new RawRule(2, 4, b).prepare());
 
         byte[][] c = {
                 {2, 0, 0, 0},
                 {3, 0, 0, 0}};
-        form.add(new Rule(2, 4, c).prepare());
+        form.add(new RawRule(2, 4, c).prepare());
 
         byte[][] d = {
                 {0, 3, 0, 0},
                 {1, 0, 1, 0}};
-        form.add(new Rule(2, 4, d).prepare());
+        form.add(new RawRule(2, 4, d).prepare());
 
         byte[][] e = {
                 {1, 2, 0, 0},
                 {0, 0, 0, 0}};
-        form.add(new Rule(2, 4, e).prepare());
+        form.add(new RawRule(2, 4, e).prepare());
 
     }
 
@@ -56,7 +53,7 @@ class ConjunctiveFormTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a2).prepare());
+        form.add(new RawRule(5, 5, a2).prepare());
 
         byte[][] a3 = {
                 {0, 0, 0, 0, 0},
@@ -65,7 +62,7 @@ class ConjunctiveFormTest {
                 {0, 0, 0, 0, 0},
                 {4, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a3).prepare());
+        form.add(new RawRule(5, 5, a3).prepare());
 
         byte[][] a4 = {
                 {5, 0, 0, 0, 0},
@@ -74,7 +71,7 @@ class ConjunctiveFormTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a4).prepare());
+        form.add(new RawRule(5, 5, a4).prepare());
 
         byte[][] a5 = {
                 {0, 0, 0, 0, 0},
@@ -83,7 +80,7 @@ class ConjunctiveFormTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a5).prepare());
+        form.add(new RawRule(5, 5, a5).prepare());
 
         byte[][] a6 = {
                 {4, 5, 0, 0, 0},
@@ -92,7 +89,7 @@ class ConjunctiveFormTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a6).prepare());
+        form.add(new RawRule(5, 5, a6).prepare());
 
         byte[][] a7 = {
                 {0, 0, 0, 0, 0},
@@ -101,7 +98,7 @@ class ConjunctiveFormTest {
                 {3, 0, 0, 0, 0},
                 {3, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a7).prepare());
+        form.add(new RawRule(5, 5, a7).prepare());
 
         byte[][] a8 = {
                 {1, 0, 0, 0, 0},
@@ -110,7 +107,7 @@ class ConjunctiveFormTest {
                 {1, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a8).prepare());
+        form.add(new RawRule(5, 5, a8).prepare());
 
         byte[][] a9 = {
                 {0, 0, 0, 0, 0},
@@ -119,7 +116,7 @@ class ConjunctiveFormTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a9).splitControversial());
+        form.add(new RawRule(5, 5, a9).splitControversial());
 
         byte[][] a10 = {
                 {0, 0, 0, 0, 0},
@@ -128,7 +125,7 @@ class ConjunctiveFormTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a10).splitControversial());
+        form.add(new RawRule(5, 5, a10).splitControversial());
 
         byte[][] a11 = {
                 {0, 0, 0, 0, 0},
@@ -137,7 +134,7 @@ class ConjunctiveFormTest {
                 {0, 2, 0, 0, 0},
                 {1, 0, 1, 0, 0}
         };
-        form.add(new Rule(5, 5, a11).prepare());
+        form.add(new RawRule(5, 5, a11).prepare());
 
         byte[][] b = {
                 {0, 0, 0, 0, 0},
@@ -146,7 +143,7 @@ class ConjunctiveFormTest {
                 {1, 0, 1, 0, 0},
                 {0, 2, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, b).prepare());
+        form.add(new RawRule(5, 5, b).prepare());
 
         byte[][] a13 = {
                 {0, 0, 0, 0, 0},
@@ -155,7 +152,7 @@ class ConjunctiveFormTest {
                 {4, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a13).prepare());
+        form.add(new RawRule(5, 5, a13).prepare());
 
         byte[][] a14 = {
                 {0, 0, 0, 0, 0},
@@ -164,7 +161,7 @@ class ConjunctiveFormTest {
                 {5, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a14).prepare());
+        form.add(new RawRule(5, 5, a14).prepare());
 
         byte[][] a15 = {
                 {2, 0, 2, 0, 0},
@@ -173,7 +170,7 @@ class ConjunctiveFormTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-        form.add(new Rule(5, 5, a15).prepare());
+        form.add(new RawRule(5, 5, a15).prepare());
     }
 
     @Test

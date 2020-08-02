@@ -79,6 +79,7 @@ public class DisjunctiveTerm implements Comparable<DisjunctiveTerm>{
         return res;
     }
 
+    /*
     public DisjunctiveTerm splitControversial(){
 
         DisjunctiveTerm res = new DisjunctiveTerm();
@@ -89,6 +90,8 @@ public class DisjunctiveTerm implements Comparable<DisjunctiveTerm>{
 
         return res;
     }
+
+     */
 
     public DisjunctiveTerm fillGaps(){
 
