@@ -5,7 +5,7 @@ import com.destructioncatalyst.einsteinspuzzle.controller.button.StartButtonCont
 import javax.swing.*;
 import java.awt.*;
 
-public class StartPanelGenerator {
+public class StartPanelGenerator implements PanelGenerator{
 
     private JPanel panel1;
     private JLabel welcomeLabel;
@@ -24,7 +24,7 @@ public class StartPanelGenerator {
                         containerFrame));
         exitButton.addActionListener((event) -> System.exit(0));
     }
-
+    @Override
     public JPanel getPanel() {
         return panel1;
     }

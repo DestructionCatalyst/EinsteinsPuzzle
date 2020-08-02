@@ -38,7 +38,7 @@ public class StartButtonController extends BasicButtonController{
                     solutionController.getDimension(),
                     solutionController.getObjectCount(),
                     mainFrame
-                    ).getPanel()
+                    )
             );
 
         }

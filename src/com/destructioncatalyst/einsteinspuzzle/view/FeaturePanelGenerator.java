@@ -5,7 +5,7 @@ import com.destructioncatalyst.einsteinspuzzle.view.tables.AttributeTable;
 import javax.swing.*;
 import java.awt.*;
 
-public class FeaturePanelGenerator {
+public class FeaturePanelGenerator implements PanelGenerator{
 
     private JPanel panel;
     private JLabel insertAttribLabel;
@@ -30,7 +30,7 @@ public class FeaturePanelGenerator {
 
     }
 
-
+    @Override
     public JPanel getPanel() {
 
         return panel;
