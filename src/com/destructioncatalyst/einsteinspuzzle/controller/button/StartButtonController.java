@@ -1,6 +1,5 @@
-package com.destructioncatalyst.einsteinspuzzle.controller;
+package com.destructioncatalyst.einsteinspuzzle.controller.button;
 
-import com.destructioncatalyst.einsteinspuzzle.view.EPanels;
 import com.destructioncatalyst.einsteinspuzzle.view.FeaturePanelGenerator;
 
 import javax.swing.*;
@@ -26,26 +25,21 @@ public class StartButtonController extends BasicButtonController{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int dim = -1;
-        int num = -1;
+        int dim;
+        int num;
 
         dim = parse(dimension);
         num = parse(numberOfElements, false, (dim > -1));
 
         if((dim + num) > 0){
 
-            nextPanel(new FeaturePanelGenerator(dim, num, mainFrame).getPanel());
-
-            /*
-            JPanel cardPanel = (JPanel) mainFrame.getContentPane();
-
-            JPanel featurePanel = new FeaturePanelGenerator(dim, num, mainFrame).getPanel();
-            cardPanel.add(EPanels.FEATURE.toString(), featurePanel);
-
-            CardLayout layout = (CardLayout)(cardPanel.getLayout());
-            layout.show(cardPanel, EPanels.getInstance().next().toString());
-            */
-
+            solutionController.setDimensions(dim, num);
+            nextPanel(new FeaturePanelGenerator(
+                    solutionController.getDimension(),
+                    solutionController.getObjectCount(),
+                    mainFrame
+                    ).getPanel()
+            );
 
         }
 

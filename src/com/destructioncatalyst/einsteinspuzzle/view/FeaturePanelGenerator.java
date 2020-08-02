@@ -28,36 +28,6 @@ public class FeaturePanelGenerator {
 
         scrollPane.setVisible(true);
 
-        /*
-        attribPanel.setLayout(null);
-        attribPanel.setPreferredSize(new Dimension(
-                (horizontalPadding * 2) + labelWidth + (textFieldWidth + horizontalPadding) * objectCount,
-                verticalPadding + dimension * (lineHeight + verticalPadding)));
-
-        for (int i = 0; i < dimension; i++) {
-
-            labels[i] = new JLabel("Атрибут " + (i + 1));
-            labels[i].setBounds(horizontalPadding,
-                    verticalPadding + i * (lineHeight + verticalPadding),
-                    labelWidth,
-                    lineHeight);
-            labels[i].setFont(new Font(labels[i].getFont().getName(), Font.BOLD, 20));
-            attribPanel.add(labels[i]);
-
-            for (int j = 0; j < objectCount; j++) {
-                textFields[i][j] = new JTextField();
-                textFields[i][j].setBounds(
-                        (horizontalPadding * 2) + labelWidth + (textFieldWidth + horizontalPadding) * j,
-                        verticalPadding + i * (lineHeight + verticalPadding),
-                        textFieldWidth,
-                        lineHeight);
-                attribPanel.add(textFields[i][j]);
-            }
-        }
-
-        */
-
-
     }
 
 
@@ -130,7 +100,7 @@ public class FeaturePanelGenerator {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         table1 = new AttributeTable(AttributeTable.generateTableModel(dimension, objectCount));
+
     }
 }

@@ -1,4 +1,4 @@
-package com.destructioncatalyst.einsteinspuzzle.controller;
+package com.destructioncatalyst.einsteinspuzzle.controller.button;
 
 import com.destructioncatalyst.einsteinspuzzle.model.conversion.FeatureConverter;
 import com.destructioncatalyst.einsteinspuzzle.view.tables.AttributeTable;
@@ -20,6 +20,9 @@ public class FeatureButtonController extends BasicButtonController{
     public void actionPerformed(ActionEvent e) {
 
         FeatureConverter converter = new FeatureConverter(table.firstColumn(), table.getContent());
+        solutionController.addFeatureConverter(converter);
+
+        //TODO go to next panel
 
     }
 }

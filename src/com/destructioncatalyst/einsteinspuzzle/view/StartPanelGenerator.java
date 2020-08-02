@@ -1,10 +1,9 @@
 package com.destructioncatalyst.einsteinspuzzle.view;
 
-import com.destructioncatalyst.einsteinspuzzle.controller.StartButtonController;
+import com.destructioncatalyst.einsteinspuzzle.controller.button.StartButtonController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class StartPanelGenerator {
 
