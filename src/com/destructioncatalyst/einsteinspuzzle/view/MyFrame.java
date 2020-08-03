@@ -34,7 +34,7 @@ public class MyFrame extends JFrame implements IPanelContainer {
     }
 
     @Override
-    public void nextPanel(SolutionController solutionController){
+    public void nextPanel(){
 
         IPanelGenerator myPanelGenerator;
 
@@ -46,8 +46,8 @@ public class MyFrame extends JFrame implements IPanelContainer {
                 break;
             case FEATURE:
                 myPanelGenerator = new FeaturePanelGenerator(
-                        solutionController.getDimension(),
-                        solutionController.getObjectCount(),
+                        SolutionController.getInstance().getDimension(),
+                        SolutionController.getInstance().getObjectCount(),
                         this);
                 break;
             case RULE:

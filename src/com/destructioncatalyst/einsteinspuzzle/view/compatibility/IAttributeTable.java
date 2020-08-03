@@ -6,4 +6,5 @@ public interface IAttributeTable {
 
     String[] firstColumn();
     ArrayList<String>[] getContent();
+    void finishEditing();
 }

@@ -12,9 +12,20 @@ public class SolutionController {
 
     private ConjunctiveForm conjunctiveForm;
 
-    public SolutionController(){
+    private static SolutionController instance = null;
+
+    private SolutionController(){
 
         conjunctiveForm = new ConjunctiveForm();
+    }
+
+    public static SolutionController getInstance(){
+
+        if (instance == null) {
+            instance = new SolutionController();
+        }
+
+        return instance;
     }
 
     public void addFeatureConverter(FeatureConverter converter){

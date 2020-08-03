@@ -20,7 +20,7 @@ public class AttributeTable extends JTable implements IAttributeTable {
 
         getColumnModel().getColumn(0).setPreferredWidth(firstColumnWidth);
 
-
+        getTableHeader().setReorderingAllowed(false);
 
         setVisible(true);
     }
@@ -48,15 +48,7 @@ public class AttributeTable extends JTable implements IAttributeTable {
         return tm;
     }
 
-    /*
     @Override
-    public boolean isCellEditable(int row, int column) {
-        if((row == 0) || column == 0)
-            return false;
-        return super.isCellEditable(row, column);
-    }
-    */
-
     public String[] firstColumn(){
 
         String[] res = new String[getRowCount()];
@@ -75,6 +67,10 @@ public class AttributeTable extends JTable implements IAttributeTable {
         String tmp;
 
         for (int i = 1; i < getColumnCount(); i++) {
+
+            line.add((String) getValueAt(index, i));
+
+            /*
             tmp = (String) getValueAt(index, i);
 
             if(line.contains(tmp)){
@@ -82,12 +78,15 @@ public class AttributeTable extends JTable implements IAttributeTable {
             }
             else
                 line.add(tmp);
+
+             */
         }
 
         return line;
 
     }
 
+    @Override
     public ArrayList<String>[] getContent(){
 
         ArrayList<String>[] lines = new ArrayList[getRowCount()];
@@ -98,6 +97,17 @@ public class AttributeTable extends JTable implements IAttributeTable {
         }
 
        return lines;
+
+    }
+
+    @Override
+    public void finishEditing(){
+
+        CellEditor editor = getCellEditor();
+
+        if (editor != null) {
+            editor.stopCellEditing();
+        }
 
     }
 

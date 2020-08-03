@@ -28,6 +28,8 @@ public class FeatureConverter {
         numerators = new FeatureNumerator[dimension];
 
         for (int i = 0; i < dimension; i++) {
+
+            //System.out.println(lines[i]);
             numerators[i] = new FeatureNumerator(lines[i]);
         }
 

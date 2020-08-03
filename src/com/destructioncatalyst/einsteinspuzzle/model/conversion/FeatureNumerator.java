@@ -71,7 +71,7 @@ public class FeatureNumerator {
     private boolean containsEmpty(){
 
         for (String s: features) {
-            if(s.equals(""))
+            if((s == null) || (s.equals("")))
                 return true;
         }
 
