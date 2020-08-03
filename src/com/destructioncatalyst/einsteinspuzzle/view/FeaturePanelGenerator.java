@@ -2,7 +2,7 @@ package com.destructioncatalyst.einsteinspuzzle.view;
 
 import com.destructioncatalyst.einsteinspuzzle.controller.button.FeatureButtonController;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
-import com.destructioncatalyst.einsteinspuzzle.view.compatibility.ITable;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IFullyMutableTable;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.IPanelGenerator;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.JOptionPaneMessagePopup;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables.AttributeTable;
@@ -33,7 +33,7 @@ public class FeaturePanelGenerator implements IPanelGenerator {
         scrollPane.getHorizontalScrollBar().setUnitIncrement(10);
 
         nextButton.addActionListener(e ->
-                new FeatureButtonController((ITable) table1,
+                new FeatureButtonController((IFullyMutableTable) table1,
                         containerFrame,
                         new JOptionPaneMessagePopup()).actionPerformed()
         );
