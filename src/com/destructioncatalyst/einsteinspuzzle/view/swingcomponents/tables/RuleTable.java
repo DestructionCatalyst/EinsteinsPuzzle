@@ -2,7 +2,7 @@ package com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables;
 
 import javax.swing.table.DefaultTableModel;
 
-public class RuleTable extends AttributeTable{
+public class RuleTable extends TableWithHeaders{
 
     public RuleTable(DefaultTableModel tableModel) {
         super(tableModel);
@@ -14,4 +14,6 @@ public class RuleTable extends AttributeTable{
             return false;
         return super.isCellEditable(row, column);
     }
+
+
 }

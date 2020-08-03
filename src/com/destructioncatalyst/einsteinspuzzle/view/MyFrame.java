@@ -51,7 +51,11 @@ public class MyFrame extends JFrame implements IPanelContainer {
                         this);
                 break;
             case RULE:
-                throw new IllegalStateException("Unexpected value: " + panelNames);
+                myPanelGenerator = new RulePanelGenerator(
+                        SolutionController.getInstance().getDimension(),
+                        SolutionController.getInstance().getObjectCount(),
+                        this);
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + panelNames);
         }

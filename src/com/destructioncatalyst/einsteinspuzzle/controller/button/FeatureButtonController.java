@@ -2,17 +2,17 @@ package com.destructioncatalyst.einsteinspuzzle.controller.button;
 
 import com.destructioncatalyst.einsteinspuzzle.controller.SolutionController;
 import com.destructioncatalyst.einsteinspuzzle.model.conversion.FeatureConverter;
-import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IAttributeTable;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IMessagePopup;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.ITable;
 
 
 public class FeatureButtonController extends BasicNextButtonController {
 
-    private final IAttributeTable table;
+    private final ITable table;
     private final IMessagePopup messagePopup;
 
-    public FeatureButtonController(IAttributeTable tab, IPanelContainer frame, IMessagePopup messagePopup){
+    public FeatureButtonController(ITable tab, IPanelContainer frame, IMessagePopup messagePopup){
 
         table = tab;
         this.messagePopup = messagePopup;
@@ -37,6 +37,7 @@ public class FeatureButtonController extends BasicNextButtonController {
         }
 
         //TODO go to next panel
+        nextPanel();
 
     }
 }

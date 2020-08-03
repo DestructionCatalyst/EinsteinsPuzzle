@@ -33,6 +33,10 @@ public class SolutionController {
         featureConverter = converter;
     }
 
+    public String[] getFeatureHeaders() {
+        return featureConverter.getFeatureHeaders();
+    }
+
     public int getDimension() {
         return dimension;
     }

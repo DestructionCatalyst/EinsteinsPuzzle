@@ -1,8 +1,8 @@
 package com.destructioncatalyst.einsteinspuzzle.view;
 
 import com.destructioncatalyst.einsteinspuzzle.controller.button.FeatureButtonController;
-import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IAttributeTable;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.ITable;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.IPanelGenerator;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.JOptionPaneMessagePopup;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables.AttributeTable;
@@ -33,7 +33,7 @@ public class FeaturePanelGenerator implements IPanelGenerator {
         scrollPane.getHorizontalScrollBar().setUnitIncrement(10);
 
         nextButton.addActionListener(e ->
-                new FeatureButtonController((IAttributeTable) table1,
+                new FeatureButtonController((ITable) table1,
                         containerFrame,
                         new JOptionPaneMessagePopup()).actionPerformed()
         );
@@ -57,19 +57,19 @@ public class FeaturePanelGenerator implements IPanelGenerator {
         createUIComponents();
         final JScrollPane scrollPane1 = new JScrollPane();
         panel = new JPanel();
-        panel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(2, 3, new Insets(0, 0, 0, 0), -1, -1));
+        panel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(2, 4, new Insets(0, 0, 0, 0), -1, -1));
         scrollPane1.setViewportView(panel);
         insertAttribLabel = new JLabel();
         Font insertAttribLabelFont = this.$$$getFont$$$(null, -1, 20, insertAttribLabel.getFont());
         if (insertAttribLabelFont != null) insertAttribLabel.setFont(insertAttribLabelFont);
         insertAttribLabel.setHorizontalAlignment(0);
         insertAttribLabel.setHorizontalTextPosition(0);
-        insertAttribLabel.setText("Введите значения аттрибутов:");
+        insertAttribLabel.setText("Введите возможные значения аттрибутов:");
         panel.add(insertAttribLabel, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         scrollPane = new JScrollPane();
         scrollPane.setHorizontalScrollBarPolicy(30);
         scrollPane.setVerticalScrollBarPolicy(20);
-        panel.add(scrollPane, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 3, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+        panel.add(scrollPane, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 4, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         table1.setFocusCycleRoot(false);
         scrollPane.setViewportView(table1);
         nextButton = new JButton();
@@ -79,7 +79,7 @@ public class FeaturePanelGenerator implements IPanelGenerator {
         nextButton.setText("Далее");
         nextButton.setVerticalAlignment(0);
         nextButton.setVerticalTextPosition(3);
-        panel.add(nextButton, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_SOUTHWEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, 1, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(200, -1), null, 0, false));
+        panel.add(nextButton, new com.intellij.uiDesigner.core.GridConstraints(0, 3, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_SOUTHWEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, 1, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(200, -1), null, 0, false));
         helpButton = new JButton();
         helpButton.setHorizontalAlignment(0);
         helpButton.setHorizontalTextPosition(2);

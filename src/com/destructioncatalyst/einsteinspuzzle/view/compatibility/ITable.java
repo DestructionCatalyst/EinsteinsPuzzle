@@ -2,7 +2,7 @@ package com.destructioncatalyst.einsteinspuzzle.view.compatibility;
 
 import java.util.ArrayList;
 
-public interface IAttributeTable {
+public interface ITable {
 
     String[] firstColumn();
     ArrayList<String>[] getContent();

@@ -1,12 +1,12 @@
 package com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables;
 
-import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IAttributeTable;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.ITable;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-public class AttributeTable extends JTable implements IAttributeTable {
+public class AttributeTable extends JTable implements ITable {
 
 
     public AttributeTable(DefaultTableModel tableModel){
@@ -70,16 +70,6 @@ public class AttributeTable extends JTable implements IAttributeTable {
 
             line.add((String) getValueAt(index, i));
 
-            /*
-            tmp = (String) getValueAt(index, i);
-
-            if(line.contains(tmp)){
-                return null;
-            }
-            else
-                line.add(tmp);
-
-             */
         }
 
         return line;

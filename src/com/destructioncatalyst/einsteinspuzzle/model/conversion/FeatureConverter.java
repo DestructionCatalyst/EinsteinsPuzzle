@@ -62,4 +62,7 @@ public class FeatureConverter {
         return lines;
     }
 
+    public String[] getFeatureHeaders() {
+        return featureHeaders;
+    }
 }
