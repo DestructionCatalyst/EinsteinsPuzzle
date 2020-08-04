@@ -15,13 +15,6 @@ public class DisjunctiveTerm implements Comparable<DisjunctiveTerm>{
         rules = new HashSet<>();
     }
 
-    public DisjunctiveTerm(int dimension, int objectCount){
-        rules = new HashSet<>();
-
-        this.dimension = dimension;
-        this.objectCount = objectCount;
-    }
-
     public DisjunctiveTerm add(Rule r){
 
         if((dimension == 0) || (objectCount == 0)){

@@ -57,10 +57,6 @@ public class FeatureNumerator {
         return res;
     }
 
-    public boolean contains(String s) {
-        return features.contains(s);
-    }
-
     private boolean checkRepeat(){
 
         HashSet<String> strings = new HashSet<>();

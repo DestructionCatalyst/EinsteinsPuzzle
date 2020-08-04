@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ConjunctiveFormTest {
 
-    ConjunctiveForm form = new ConjunctiveForm();
+    private final ConjunctiveForm form = new ConjunctiveForm();
 
     //@BeforeEach
     void setUpEasy() {

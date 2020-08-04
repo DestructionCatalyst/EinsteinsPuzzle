@@ -57,14 +57,13 @@ public class StartButtonController extends BasicNextButtonController {
         try {
             res = Integer.parseInt(text.getText());
             if ((res < 0) || (!allowsZero && (res == 0))) throw new NumberFormatException();
-            text.setBackground(255, 255, 255);
+            text.showCorrect();
         }
         catch (NumberFormatException e){
             if(showError)
                 messagePopup.showError(
-                        "Некорректный ввод!",
-                        "Ошибка!");
-            text.setBackground(255,60, 60);
+                        "Некорректный ввод!");
+            text.showError();
             return -1;
         }
         return res;

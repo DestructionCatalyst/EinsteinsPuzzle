@@ -26,6 +26,7 @@ public abstract class BasicMutableTable extends BasicTable implements IMutableTa
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public ArrayList<String>[] getContent(){
 

@@ -36,10 +36,6 @@ public class Solver {
         featureConverter = converter;
     }
 
-    public String[] getFeatureHeaders() {
-        return featureConverter.getFeatureHeaders();
-    }
-
     public int getDimension() {
         return dimension;
     }

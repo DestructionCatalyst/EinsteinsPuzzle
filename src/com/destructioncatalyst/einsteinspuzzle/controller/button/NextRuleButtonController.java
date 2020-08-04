@@ -1,5 +1,6 @@
 package com.destructioncatalyst.einsteinspuzzle.controller.button;
 
+import com.destructioncatalyst.einsteinspuzzle.exceptions.EmptyRuleException;
 import com.destructioncatalyst.einsteinspuzzle.model.Solver;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IMessagePopup;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
@@ -34,7 +35,10 @@ public class NextRuleButtonController extends BasicNextButtonController{
             nextPanel();
         }
         catch (IllegalArgumentException e){
-            messagePopup.showError("Некорректное значение!", "Ошибка!");
+            messagePopup.showError("Некорректное значение!");
+        }
+        catch (EmptyRuleException e){
+            messagePopup.showError("Нельзя добавить пустое правило!");
         }
 
 

@@ -30,13 +30,13 @@ public class FeatureButtonController extends BasicNextButtonController {
             Solver.getInstance().addFeatureConverter(converter);
 
             mainFrame.addNames(table.getNames());
+
+            nextPanel();
         }
         catch (IllegalArgumentException e){
-            messagePopup.showError("Таблица не должна содержать пустых или повторяющихся значений",
-                    "Ошибка");
+            messagePopup.showError("Таблица не должна содержать пустых или повторяющихся значений");
         }
 
-        nextPanel();
 
     }
 }

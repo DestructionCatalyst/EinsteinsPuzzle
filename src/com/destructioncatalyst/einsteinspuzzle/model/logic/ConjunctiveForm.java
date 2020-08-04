@@ -13,6 +13,7 @@ public class ConjunctiveForm {
         terms = new ArrayList<>();
     }
 
+
     public ConjunctiveForm add(DisjunctiveTerm disjunctiveTerm){
 
         terms.add(disjunctiveTerm);
@@ -33,10 +34,12 @@ public class ConjunctiveForm {
         return this;
     }
 
+    @Deprecated
     private DisjunctiveTerm pop() {
         return pop(terms.size() - 1);
     }
 
+    @Deprecated
     private DisjunctiveTerm pop(int index){
         return terms.remove(index);
     }

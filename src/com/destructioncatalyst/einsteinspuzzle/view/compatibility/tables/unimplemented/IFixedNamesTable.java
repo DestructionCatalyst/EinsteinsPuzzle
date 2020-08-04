@@ -2,5 +2,6 @@ package com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.unimpl
 
 public interface IFixedNamesTable extends ITable{
 
+    @SuppressWarnings("unused")
     void setNames(String[] names);
 }

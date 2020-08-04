@@ -8,12 +8,12 @@ public class JOptionPaneMessagePopup implements IMessagePopup {
 
 
     @Override
-    public void showMessage(String message, String title) {
-        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message, "Сообщение", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
-    public void showError(String message, String title) {
-        JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(null, message, "Ошибка!", JOptionPane.ERROR_MESSAGE);
     }
 }

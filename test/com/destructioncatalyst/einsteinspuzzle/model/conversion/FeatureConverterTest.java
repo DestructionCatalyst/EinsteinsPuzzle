@@ -6,13 +6,15 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
+@SuppressWarnings("rawtypes")
 class FeatureConverterTest {
 
     FeatureConverter featureConverter;
     String[] headers;
 
+    @SuppressWarnings("unchecked")
     @BeforeEach
     void setUp() {
 
@@ -31,6 +33,7 @@ class FeatureConverterTest {
         featureConverter = new FeatureConverter(headers, lines);
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     void testEncode() {
 

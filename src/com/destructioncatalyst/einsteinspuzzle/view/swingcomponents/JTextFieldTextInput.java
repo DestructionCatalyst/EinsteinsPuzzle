@@ -7,10 +7,15 @@ import java.awt.*;
 
 public class JTextFieldTextInput extends JTextField implements ITextInput {
 
+    private final Color LIGHT_RED = new Color(255, 60, 60);
 
     @Override
-    public void setBackground(int r, int g, int b) {
-        super.setBackground(new Color(r, g, b));
+    public void showError() {
+        setBackground(LIGHT_RED);
     }
 
+    @Override
+    public void showCorrect() {
+        setBackground(Color.WHITE);
+    }
 }
