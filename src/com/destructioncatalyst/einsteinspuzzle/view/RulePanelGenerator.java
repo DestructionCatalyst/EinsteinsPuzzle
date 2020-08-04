@@ -1,8 +1,9 @@
 package com.destructioncatalyst.einsteinspuzzle.view;
 
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.ITableFactory;
+import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.CheckBoxBinaryStateButton;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.IPanelGenerator;
-import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables.RuleTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,13 +18,11 @@ public class RulePanelGenerator implements IPanelGenerator {
     private JCheckBox fixRuleCheckBox;
     private JButton solveButton;
 
-    private final int dimension;
-    private final int objectCount;
+    private final ITableFactory tableFactory;
 
-    public RulePanelGenerator(int dimension, int objectCount, IPanelContainer containerFrame) {
+    public RulePanelGenerator(ITableFactory tableFactory, IPanelContainer containerFrame) {
 
-        this.dimension = dimension;
-        this.objectCount = objectCount;
+        this.tableFactory = tableFactory;
 
         $$$setupUI$$$();
 
@@ -45,7 +44,9 @@ public class RulePanelGenerator implements IPanelGenerator {
 
     private void createUIComponents() {
 
-        table1 = new RuleTable(RuleTable.generateTableModel(dimension, objectCount));
+        table1 = (JTable) tableFactory.getRuleTable();//new RuleTable(RuleTable.generateTableModel(dimension, objectCount));
+
+        fixRuleCheckBox = new CheckBoxBinaryStateButton();
     }
 
     /**
@@ -88,7 +89,6 @@ public class RulePanelGenerator implements IPanelGenerator {
         panel.add(scrollPane, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 4, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         table1.setFocusCycleRoot(false);
         scrollPane.setViewportView(table1);
-        fixRuleCheckBox = new JCheckBox();
         fixRuleCheckBox.setText("Зафиксировать положение элементов");
         panel.add(fixRuleCheckBox, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         solveButton = new JButton();

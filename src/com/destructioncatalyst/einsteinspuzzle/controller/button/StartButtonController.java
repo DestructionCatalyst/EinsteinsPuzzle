@@ -1,6 +1,6 @@
 package com.destructioncatalyst.einsteinspuzzle.controller.button;
 
-import com.destructioncatalyst.einsteinspuzzle.controller.SolutionController;
+import com.destructioncatalyst.einsteinspuzzle.model.Solver;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IMessagePopup;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.ITextInput;
@@ -34,7 +34,9 @@ public class StartButtonController extends BasicNextButtonController {
 
         if((dim > 0) && (num > 0)){
 
-            SolutionController.getInstance().setDimensions(dim, num);
+            Solver.getInstance().setDimensions(dim, num);
+            mainFrame.initializeTableFactory(dim, num);
+
             nextPanel();
 
         }

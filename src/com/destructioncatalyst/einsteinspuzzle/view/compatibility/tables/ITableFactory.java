@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public interface ITableFactory {
 
+    void addNames(String[] names);
+
     IFullyMutableTable getAttributeTable();
-    IFixedNamesMutableTable getRuleTable(String[] names);
-    IImmutableTable getResultTable(String[] names, ArrayList<String>[] content);
+    IFixedNamesMutableTable getRuleTable();
+    IImmutableTable getResultTable(ArrayList<String>[] content);
 }

@@ -1,9 +1,9 @@
-package com.destructioncatalyst.einsteinspuzzle.controller;
+package com.destructioncatalyst.einsteinspuzzle.model;
 
 import com.destructioncatalyst.einsteinspuzzle.model.conversion.FeatureConverter;
 import com.destructioncatalyst.einsteinspuzzle.model.logic.ConjunctiveForm;
 
-public class SolutionController {
+public class Solver {
 
     private int dimension;
     private int objectCount;
@@ -12,17 +12,17 @@ public class SolutionController {
 
     private ConjunctiveForm conjunctiveForm;
 
-    private static SolutionController instance = null;
+    private static Solver instance = null;
 
-    private SolutionController(){
+    private Solver(){
 
         conjunctiveForm = new ConjunctiveForm();
     }
 
-    public static SolutionController getInstance(){
+    public static Solver getInstance(){
 
         if (instance == null) {
-            instance = new SolutionController();
+            instance = new Solver();
         }
 
         return instance;
@@ -39,6 +39,10 @@ public class SolutionController {
 
     public int getDimension() {
         return dimension;
+    }
+
+    public void addRule() {
+
     }
 
     public int getObjectCount() {

@@ -1,6 +1,6 @@
 package com.destructioncatalyst.einsteinspuzzle.controller.button;
 
-import com.destructioncatalyst.einsteinspuzzle.controller.SolutionController;
+import com.destructioncatalyst.einsteinspuzzle.model.Solver;
 import com.destructioncatalyst.einsteinspuzzle.model.conversion.FeatureConverter;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IMessagePopup;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
@@ -24,19 +24,18 @@ public class FeatureButtonController extends BasicNextButtonController {
 
         table.finishEditing();
 
-        boolean success = false;
-
         try {
-            FeatureConverter converter = new FeatureConverter(table.getNames(), table.getContent());
 
-            SolutionController.getInstance().addFeatureConverter(converter);
+            FeatureConverter converter = new FeatureConverter(table.getNames(), table.getContent());
+            Solver.getInstance().addFeatureConverter(converter);
+
+            mainFrame.addNames(table.getNames());
         }
         catch (IllegalArgumentException e){
             messagePopup.showError("Таблица не должна содержать пустых или повторяющихся значений",
                     "Ошибка");
         }
 
-        //TODO go to next panel
         nextPanel();
 
     }

@@ -10,32 +10,22 @@ import java.util.ArrayList;
 
 public class SwingTableFactory implements ITableFactory {
 
-    private static SwingTableFactory instance = null;
+    private final int mRowCount;
+    private final int mRolCount;
 
-    private int mRowCount;
-    private int mRolCount;
+    private String[] names;
 
-    private SwingTableFactory(int rowCount, int colCount) {
+    public SwingTableFactory(int rowCount, int colCount) {
+
         this.mRowCount = rowCount;
         this.mRolCount = colCount;
     }
 
-    private static void initialize(int dimension, int objectCount){
+    @Override
+    public void addNames(String[] names){
 
-        instance = new SwingTableFactory(dimension, objectCount);
-
+        this.names = names;
     }
-
-    public static SwingTableFactory getInstance(){
-
-        if (instance == null) {
-            throw new NullPointerException
-                    ("Table Factory has not been initialized yet, use initialize(int, int) first");
-        }
-
-        return instance;
-    }
-
 
     @Override
     public IFullyMutableTable getAttributeTable() {
@@ -44,7 +34,7 @@ public class SwingTableFactory implements ITableFactory {
     }
 
     @Override
-    public IFixedNamesMutableTable getRuleTable(String[] names) {
+    public IFixedNamesMutableTable getRuleTable() {
 
         RuleTable table = new RuleTable(generateTableModel(mRowCount, mRolCount));
 
@@ -54,7 +44,7 @@ public class SwingTableFactory implements ITableFactory {
     }
 
     @Override
-    public IImmutableTable getResultTable(String[] names, ArrayList<String>[] content) {
+    public IImmutableTable getResultTable(ArrayList<String>[] content) {
 
         ResultTable table = new ResultTable(generateTableModel(mRowCount, mRolCount));
 

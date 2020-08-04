@@ -22,29 +22,5 @@ public abstract class BasicTable extends JTable implements ITable {
 
         setVisible(true);
     }
-
-    //TODO to factory?
-    private static Object[] generateHeader(int objectCount){
-
-        Object[] header = new Object[objectCount + 1];
-
-        header[0] = "Названия свойств";
-
-        for(int i = 1; i <= objectCount; i++){
-            header[i] = i;
-        }
-
-        return header;
-    }
-
-    //TODO to factory?
-    public static DefaultTableModel generateTableModel(int dimension, int objectCount){
-
-        DefaultTableModel tm = new DefaultTableModel();
-
-        tm.setColumnIdentifiers(generateHeader(objectCount));
-        tm.setRowCount(dimension);
-
-        return tm;
-    }
+    
 }

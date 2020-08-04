@@ -1,15 +1,17 @@
 package com.destructioncatalyst.einsteinspuzzle.view;
 
-import com.destructioncatalyst.einsteinspuzzle.controller.SolutionController;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.IPanelGenerator;
+import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables.SwingTableFactory;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MyFrame extends JFrame implements IPanelContainer {
 
-    EPanels panelNames;
+    private EPanels panelNames;
+
+    private SwingTableFactory factory;
 
     public MyFrame() throws HeadlessException {
         super("Загадка Эйнштейна");
@@ -33,6 +35,19 @@ public class MyFrame extends JFrame implements IPanelContainer {
         setVisible(true);
     }
 
+
+    @Override
+    public void initializeTableFactory(int rowCount, int colCount) {
+
+        factory = new SwingTableFactory(rowCount, colCount);
+    }
+
+    @Override
+    public void addNames(String[] names) {
+
+        factory.addNames(names);
+    }
+
     @Override
     public void nextPanel(){
 
@@ -45,16 +60,10 @@ public class MyFrame extends JFrame implements IPanelContainer {
                 myPanelGenerator = new StartPanelGenerator(this);
                 break;
             case FEATURE:
-                myPanelGenerator = new FeaturePanelGenerator(
-                        SolutionController.getInstance().getDimension(),
-                        SolutionController.getInstance().getObjectCount(),
-                        this);
+                myPanelGenerator = new FeaturePanelGenerator(factory, this);
                 break;
             case RULE:
-                myPanelGenerator = new RulePanelGenerator(
-                        SolutionController.getInstance().getDimension(),
-                        SolutionController.getInstance().getObjectCount(),
-                        this);
+                myPanelGenerator = new RulePanelGenerator(factory, this);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + panelNames);

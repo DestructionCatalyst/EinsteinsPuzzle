@@ -3,9 +3,9 @@ package com.destructioncatalyst.einsteinspuzzle.view;
 import com.destructioncatalyst.einsteinspuzzle.controller.button.FeatureButtonController;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IFullyMutableTable;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.ITableFactory;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.IPanelGenerator;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.JOptionPaneMessagePopup;
-import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables.AttributeTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,14 +18,13 @@ public class FeaturePanelGenerator implements IPanelGenerator {
     private JButton nextButton;
     private JTable table1;
     private JButton helpButton;
-    private final int dimension;
-    private final int objectCount;
+
+    private final ITableFactory tableFactory;
 
 
-    public FeaturePanelGenerator(int dimension, int objectCount, IPanelContainer containerFrame) {
+    public FeaturePanelGenerator(ITableFactory tableFactory, IPanelContainer containerFrame) {
 
-        this.dimension = dimension;
-        this.objectCount = objectCount;
+        this.tableFactory = tableFactory;
 
         $$$setupUI$$$();
 
@@ -110,7 +109,7 @@ public class FeaturePanelGenerator implements IPanelGenerator {
     }
 
     private void createUIComponents() {
-        table1 = new AttributeTable(AttributeTable.generateTableModel(dimension, objectCount));
+        table1 = (JTable) tableFactory.getAttributeTable();//new AttributeTable(AttributeTable.generateTableModel(dimension, objectCount));
 
     }
 }
