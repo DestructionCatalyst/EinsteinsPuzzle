@@ -50,6 +50,7 @@ public class FeatureConverter {
         return res;
     }
 
+    @SuppressWarnings("unchecked")
     public ArrayList<String>[] decode(byte[][] numbers){
 
         ArrayList<String>[] lines = new ArrayList[featureHeaders.length];

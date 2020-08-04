@@ -2,6 +2,9 @@ package com.destructioncatalyst.einsteinspuzzle.model;
 
 import com.destructioncatalyst.einsteinspuzzle.model.conversion.FeatureConverter;
 import com.destructioncatalyst.einsteinspuzzle.model.logic.ConjunctiveForm;
+import com.destructioncatalyst.einsteinspuzzle.model.logic.RawRule;
+
+import java.util.ArrayList;
 
 public class Solver {
 
@@ -41,8 +44,16 @@ public class Solver {
         return dimension;
     }
 
-    public void addRule() {
+    public void addRule(ArrayList<String>[] ruleTable, boolean fixed) {
 
+        RawRule rawRule = new RawRule(dimension, objectCount, featureConverter.encode(ruleTable));
+
+        if(fixed)
+            conjunctiveForm.add(rawRule.splitControversial());
+        else
+            conjunctiveForm.add(rawRule.prepare());
+
+        System.out.println(conjunctiveForm);
     }
 
     public int getObjectCount() {

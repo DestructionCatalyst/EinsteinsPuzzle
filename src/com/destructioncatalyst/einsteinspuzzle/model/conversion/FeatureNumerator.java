@@ -22,7 +22,12 @@ public class FeatureNumerator {
         if ((str == null) || (str.equals("")))
             return 0;
 
-        return features.indexOf(str) + 1;
+        int index = features.indexOf(str);
+
+        if (index == -1)
+            throw new IllegalArgumentException("String not found!");
+
+        return index + 1;
     }
 
     public byte[] encodeLine(ArrayList<String> line){

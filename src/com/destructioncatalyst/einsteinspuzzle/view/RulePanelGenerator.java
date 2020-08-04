@@ -1,9 +1,13 @@
 package com.destructioncatalyst.einsteinspuzzle.view;
 
+import com.destructioncatalyst.einsteinspuzzle.controller.button.NextRuleButtonController;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IBinaryStateButton;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IFixedNamesMutableTable;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.ITableFactory;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.CheckBoxBinaryStateButton;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.IPanelGenerator;
+import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.JOptionPaneMessagePopup;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,10 +33,11 @@ public class RulePanelGenerator implements IPanelGenerator {
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
         scrollPane.getHorizontalScrollBar().setUnitIncrement(10);
 
-        nextButton.addActionListener(e -> hashCode()
-                /*new FeatureButtonController((ITable) table1,
+        nextButton.addActionListener(e ->
+                new NextRuleButtonController((IFixedNamesMutableTable) table1,
+                        (IBinaryStateButton) fixRuleCheckBox,
                         containerFrame,
-                        new JOptionPaneMessagePopup()).actionPerformed()*/
+                        new JOptionPaneMessagePopup()).actionPerformed()
         );
 
     }
@@ -56,6 +61,7 @@ public class RulePanelGenerator implements IPanelGenerator {
      *
      * @noinspection ALL
      */
+
     private void $$$setupUI$$$() {
         createUIComponents();
         panel = new JPanel();
