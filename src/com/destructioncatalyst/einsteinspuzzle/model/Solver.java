@@ -2,6 +2,7 @@ package com.destructioncatalyst.einsteinspuzzle.model;
 
 import com.destructioncatalyst.einsteinspuzzle.model.conversion.FeatureConverter;
 import com.destructioncatalyst.einsteinspuzzle.model.logic.ConjunctiveForm;
+import com.destructioncatalyst.einsteinspuzzle.model.logic.DisjunctiveTerm;
 import com.destructioncatalyst.einsteinspuzzle.model.logic.RawRule;
 
 import java.util.ArrayList;
@@ -50,6 +51,11 @@ public class Solver {
             conjunctiveForm.add(rawRule.prepare());
 
         System.out.println(conjunctiveForm);
+    }
+
+    public DisjunctiveTerm solve(){
+
+        return conjunctiveForm.toDisjunctive();
     }
 
     public int getObjectCount() {

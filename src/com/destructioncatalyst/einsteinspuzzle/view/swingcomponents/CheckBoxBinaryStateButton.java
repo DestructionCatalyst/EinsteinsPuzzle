@@ -1,6 +1,6 @@
 package com.destructioncatalyst.einsteinspuzzle.view.swingcomponents;
 
-import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IBinaryStateButton;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IBinaryStateButton;
 
 import javax.swing.*;
 import java.awt.event.ItemEvent;

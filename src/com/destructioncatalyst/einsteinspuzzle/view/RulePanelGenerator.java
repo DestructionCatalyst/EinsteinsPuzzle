@@ -1,8 +1,9 @@
 package com.destructioncatalyst.einsteinspuzzle.view;
 
 import com.destructioncatalyst.einsteinspuzzle.controller.button.NextRuleButtonController;
+import com.destructioncatalyst.einsteinspuzzle.controller.button.SolveButtonController;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IBinaryStateButton;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
-import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IBinaryStateButton;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IFixedNamesMutableTable;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.ITableFactory;
 import com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.CheckBoxBinaryStateButton;
@@ -40,6 +41,8 @@ public class RulePanelGenerator implements IPanelGenerator {
                         new JOptionPaneMessagePopup()).actionPerformed()
         );
 
+        solveButton.addActionListener(e ->
+                new SolveButtonController(containerFrame, new JOptionPaneMessagePopup()).actionPerformed());
     }
 
     @Override
@@ -61,7 +64,6 @@ public class RulePanelGenerator implements IPanelGenerator {
      *
      * @noinspection ALL
      */
-
     private void $$$setupUI$$$() {
         createUIComponents();
         panel = new JPanel();
@@ -85,7 +87,7 @@ public class RulePanelGenerator implements IPanelGenerator {
         nextButton.setHorizontalAlignment(0);
         nextButton.setHorizontalTextPosition(2);
         nextButton.setMargin(new Insets(5, 5, 5, 5));
-        nextButton.setText("Далее");
+        nextButton.setText("Добавить");
         nextButton.setVerticalAlignment(0);
         nextButton.setVerticalTextPosition(3);
         panel.add(nextButton, new com.intellij.uiDesigner.core.GridConstraints(0, 3, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_SOUTHWEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, 1, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(200, -1), null, 0, false));

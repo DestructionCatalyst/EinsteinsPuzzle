@@ -2,9 +2,9 @@ package com.destructioncatalyst.einsteinspuzzle.controller.button;
 
 import com.destructioncatalyst.einsteinspuzzle.exceptions.EmptyRuleException;
 import com.destructioncatalyst.einsteinspuzzle.model.Solver;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IBinaryStateButton;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IMessagePopup;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.IPanelContainer;
-import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IBinaryStateButton;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IFixedNamesMutableTable;
 
 public class NextRuleButtonController extends BasicNextButtonController{

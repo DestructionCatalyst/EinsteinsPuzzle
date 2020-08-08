@@ -44,7 +44,7 @@
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="2"/>
           <margin top="5" left="5" bottom="5" right="5"/>
-          <text value="Далее"/>
+          <text value="Добавить"/>
           <verticalAlignment value="0"/>
           <verticalTextPosition value="3"/>
         </properties>

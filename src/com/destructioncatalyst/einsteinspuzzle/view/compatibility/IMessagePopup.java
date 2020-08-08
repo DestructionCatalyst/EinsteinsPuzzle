@@ -4,5 +4,5 @@ public interface IMessagePopup {
 
     void showMessage(String message);
     void showError(String message);
-    //TODO showChoice
+    boolean showChoice(String message);
 }

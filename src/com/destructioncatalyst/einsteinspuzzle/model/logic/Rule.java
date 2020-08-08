@@ -1,5 +1,9 @@
 package com.destructioncatalyst.einsteinspuzzle.model.logic;
 
+import com.destructioncatalyst.einsteinspuzzle.model.conversion.FeatureConverter;
+
+import java.util.ArrayList;
+
 public class Rule extends BasicRule{
 
     private static int instanceCount = 0;
@@ -117,103 +121,12 @@ public class Rule extends BasicRule{
         return new Rule(dimension, objectCount, newData);
     }
 
-    /*
+    public ArrayList<String>[] toStringArray(FeatureConverter converter){
 
-    private int findRepeatedLine(){
-
-        int res = -2;
-
-        boolean[] used = new boolean[objectCount];
-
-        for (int i = 0; i < dimension; i++) {
-
-            Arrays.fill(used, false);
-
-            for (int j = 0; j < objectCount; j++) {
-                if(data[i][j] != 0){
-
-                    if(used[data[i][j] - 1])
-                        if (res != -2)
-                            return -1;
-                        else
-                            res = i;
-                    else
-                        used[data[i][j] - 1] = true;
-                }
-            }
-        }
-
-        return res;
-    }//R
-
-    private ArrayList<Integer> findRepeatIndexes(int line){
-
-        ArrayList<Integer> res = new ArrayList<>();
-
-        byte prev = 0;
-
-        for (int i = 0; i < objectCount; i++) {
-
-            if(data[line][i] != 0){
-                if((data[line][i] != prev) && (prev != 0)){
-                    throw new MultipleRepeatException("Repeated line has different numbers!");
-                }
-                res.add(i);
-            }
-
-            prev = data[line][i];
-        }
-
-        return res;
-    }//R
-
-    public DisjunctiveTerm splitControversial(){
-
-        DisjunctiveTerm res = new DisjunctiveTerm();
-
-        int targetLine = findRepeatedLine();
-
-        if(targetLine == -2)
-            return res.add(this);
-
-        if(targetLine == -1)
-            throw new MultipleRepeatException("Multiple repeated lines!");
-
-        ArrayList<Integer> indexes = findRepeatIndexes(targetLine);
-
-        for(Integer index:indexes){
-
-            res.add(copyExceptOfControversial(targetLine, index));
-        }
+        return converter.decode(data);
+    }
 
 
-        return res;
-    }//R
-
-    private Rule copyExceptOfControversial(int targetLine, int index){
-
-        byte [][] newData = new byte[dimension][objectCount];
-
-        for (int i = 0; i < targetLine; i++) {
-            if (objectCount >= 0) System.arraycopy(data[i], 0, newData[i], 0, objectCount);
-        }
-
-        Arrays.fill(newData[targetLine], (byte) 0);
-        newData[targetLine][index] = data[targetLine][index];
-
-        for (int i = targetLine + 1; i < dimension; i++) {
-            if (objectCount >= 0) System.arraycopy(data[i], 0, newData[i], 0, objectCount);
-        }
-
-        return new Rule(dimension, objectCount, newData);
-    }//R
-
-    public DisjunctiveTerm prepare(){
-        return this.splitControversial().generateShifts();
-    }//R
-
-
-     */
     public static int getInstanceCount() {
         return instanceCount;
     }

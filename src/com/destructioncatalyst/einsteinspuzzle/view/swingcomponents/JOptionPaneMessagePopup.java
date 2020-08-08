@@ -16,4 +16,14 @@ public class JOptionPaneMessagePopup implements IMessagePopup {
     public void showError(String message) {
         JOptionPane.showMessageDialog(null, message, "Ошибка!", JOptionPane.ERROR_MESSAGE);
     }
+
+    @Override
+    public boolean showChoice(String message) {
+        int result = JOptionPane.showConfirmDialog(null,
+                message,
+                "Сообщение",
+                JOptionPane.YES_NO_OPTION);
+
+        return result == JOptionPane.YES_OPTION;
+    }
 }
