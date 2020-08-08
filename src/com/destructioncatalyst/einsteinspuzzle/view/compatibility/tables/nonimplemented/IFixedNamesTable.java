@@ -1,4 +1,4 @@
-package com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.unimplemented;
+package com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.nonimplemented;
 
 public interface IFixedNamesTable extends ITable{
 

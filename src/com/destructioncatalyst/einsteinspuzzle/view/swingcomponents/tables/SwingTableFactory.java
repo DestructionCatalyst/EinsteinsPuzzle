@@ -6,7 +6,6 @@ import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IImmuta
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.ITableFactory;
 
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
 
 public class SwingTableFactory implements ITableFactory {
 
@@ -44,7 +43,7 @@ public class SwingTableFactory implements ITableFactory {
     }
 
     @Override
-    public IImmutableTable getResultTable(ArrayList<String>[] content) {
+    public IImmutableTable getResultTable(String[][] content) {
 
         ResultTable table = new ResultTable(generateTableModel(mRowCount, mRolCount));
 

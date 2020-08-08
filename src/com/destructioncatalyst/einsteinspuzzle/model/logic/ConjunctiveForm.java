@@ -14,6 +14,7 @@ public class ConjunctiveForm {
     }
 
 
+    @SuppressWarnings("UnusedReturnValue")
     public ConjunctiveForm add(DisjunctiveTerm disjunctiveTerm){
 
         terms.add(disjunctiveTerm);

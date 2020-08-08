@@ -35,9 +35,11 @@ public class NextRuleButtonController extends BasicNextButtonController{
             nextPanel();
         }
         catch (IllegalArgumentException e){
+            e.printStackTrace();
             messagePopup.showError("Некорректное значение!");
         }
         catch (EmptyRuleException e){
+            e.printStackTrace();
             messagePopup.showError("Нельзя добавить пустое правило!");
         }
 

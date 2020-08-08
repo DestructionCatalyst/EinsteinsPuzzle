@@ -34,6 +34,7 @@ public class DisjunctiveTerm implements Comparable<DisjunctiveTerm>{
     }
 
 
+    @SuppressWarnings("UnusedReturnValue")
     private DisjunctiveTerm addAll(DisjunctiveTerm d){
         rules.addAll(d.rules);
         return this;

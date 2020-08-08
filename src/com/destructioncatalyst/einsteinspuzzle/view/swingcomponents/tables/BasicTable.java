@@ -1,6 +1,6 @@
 package com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables;
 
-import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.unimplemented.ITable;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.nonimplemented.ITable;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

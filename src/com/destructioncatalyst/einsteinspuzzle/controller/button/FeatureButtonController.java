@@ -34,6 +34,7 @@ public class FeatureButtonController extends BasicNextButtonController {
             nextPanel();
         }
         catch (IllegalArgumentException e){
+            e.printStackTrace();
             messagePopup.showError("Таблица не должна содержать пустых или повторяющихся значений");
         }
 

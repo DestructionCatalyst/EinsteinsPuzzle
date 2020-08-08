@@ -2,8 +2,6 @@ package com.destructioncatalyst.einsteinspuzzle.model.logic;
 
 import com.destructioncatalyst.einsteinspuzzle.model.conversion.FeatureConverter;
 
-import java.util.ArrayList;
-
 public class Rule extends BasicRule{
 
     private static int instanceCount = 0;
@@ -121,7 +119,7 @@ public class Rule extends BasicRule{
         return new Rule(dimension, objectCount, newData);
     }
 
-    public ArrayList<String>[] toStringArray(FeatureConverter converter){
+    public String[][] toStringArray(FeatureConverter converter){
 
         return converter.decode(data);
     }

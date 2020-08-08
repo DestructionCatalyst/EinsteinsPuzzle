@@ -1,13 +1,12 @@
 package com.destructioncatalyst.einsteinspuzzle.model.conversion;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class FeatureNumerator {
 
-    private final ArrayList<String> features;
+    private final String[] features;
 
-    public FeatureNumerator(ArrayList<String> featureList){
+    public FeatureNumerator(String[] featureList){
         features = featureList;
 
         if(!checkRepeat())
@@ -22,7 +21,7 @@ public class FeatureNumerator {
         if ((str == null) || (str.equals("")))
             return 0;
 
-        int index = features.indexOf(str);
+        int index = linearSearch(features, str);
 
         if (index == -1)
             throw new IllegalArgumentException("String not found!");
@@ -30,28 +29,38 @@ public class FeatureNumerator {
         return index + 1;
     }
 
-    public byte[] encodeLine(ArrayList<String> line){
+    private int linearSearch(String[] strings, String key){
 
-        byte[] res = new byte[line.size()];
+        for (int i = 0; i < strings.length; i++) {
 
-        for (int i = 0; i < line.size(); i++) {
-            res[i] = (byte) encode(line.get(i));
+            if(strings[i].equals(key))
+                return i;
+        }
+        return -1;
+    }
+
+    public byte[] encodeLine(String[] line){
+
+        byte[] res = new byte[line.length];
+
+        for (int i = 0; i < line.length; i++) {
+            res[i] = (byte) encode(line[i]);
         }
         return res;
     }
 
     public String decode(int number){
 
-        return number == 0 ? "" : features.get(number - 1);
+        return number == 0 ? "" : features[number - 1];
     }
 
-    public ArrayList<String> decodeLine(byte[] numbers){
+    public String[] decodeLine(byte[] numbers){
 
-        ArrayList<String> res = new ArrayList<>();
+        String[] res = new String[numbers.length];
 
-        for (byte number : numbers) {
+        for (int i = 0; i < numbers.length; i++) {
 
-            res.add(decode(number));
+            res[i] = decode(numbers[i]);
         }
 
         return res;
@@ -79,5 +88,8 @@ public class FeatureNumerator {
         return false;
     }
 
+    public int getObjectCount(){
+        return features.length;
+    }
 
 }

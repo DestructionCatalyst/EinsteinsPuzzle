@@ -1,10 +1,9 @@
 package com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables;
 
-import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.unimplemented.IMutableTable;
+import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.nonimplemented.IMutableTable;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
 
 public abstract class BasicMutableTable extends BasicTable implements IMutableTable {
 
@@ -12,13 +11,13 @@ public abstract class BasicMutableTable extends BasicTable implements IMutableTa
         super(tableModel);
     }
 
-    private ArrayList<String> getLine(int index){
+    private String[] getLine(int index){
 
-        ArrayList<String> line = new ArrayList<>();
+        String[] line = new String[getColumnCount() - 1];
 
         for (int i = 1; i < getColumnCount(); i++) {
 
-            line.add((String) getValueAt(index, i));
+            line[i - 1] = ((String) getValueAt(index, i));
 
         }
 
@@ -26,11 +25,10 @@ public abstract class BasicMutableTable extends BasicTable implements IMutableTa
 
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public ArrayList<String>[] getContent(){
+    public String[][] getContent(){
 
-        ArrayList<String>[] lines = new ArrayList[getRowCount()];
+        String[][] lines = new String[getColumnCount()][getRowCount()];
 
         for (int i = 0; i < getRowCount(); i++) {
 

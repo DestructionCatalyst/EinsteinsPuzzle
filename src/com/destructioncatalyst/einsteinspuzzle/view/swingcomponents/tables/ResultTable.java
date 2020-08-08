@@ -3,7 +3,6 @@ package com.destructioncatalyst.einsteinspuzzle.view.swingcomponents.tables;
 import com.destructioncatalyst.einsteinspuzzle.view.compatibility.tables.IImmutableTable;
 
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
 
 public class ResultTable extends BasicTable implements IImmutableTable {
 
@@ -16,14 +15,14 @@ public class ResultTable extends BasicTable implements IImmutableTable {
         return false;
     }
 
-    private void setLine(int index, ArrayList<String> line){
+    private void setLine(int index, String[] line){
 
-        if (line.size() != getColumnCount() - 1)
+        if (line.length != getColumnCount() - 1)
             throw new IllegalArgumentException();
 
-        for (int i = 1; i < line.size(); i++) {
+        for (int i = 1; i < line.length; i++) {
 
-            setValueAt(line.get(i), index, i);
+            setValueAt(line[i], index, i);
         }
     }
 
@@ -37,7 +36,7 @@ public class ResultTable extends BasicTable implements IImmutableTable {
     }
 
     @Override
-    public void setContent(ArrayList<String>[] content) {
+    public void setContent(String[][] content) {
 
         for (int i = 0; i < getRowCount(); i++) {
 

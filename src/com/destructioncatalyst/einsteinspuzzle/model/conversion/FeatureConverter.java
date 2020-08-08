@@ -2,8 +2,6 @@ package com.destructioncatalyst.einsteinspuzzle.model.conversion;
 
 import com.destructioncatalyst.einsteinspuzzle.exceptions.EmptyRuleException;
 
-import java.util.ArrayList;
-
 public class FeatureConverter {
 
     private final int dimension;
@@ -19,12 +17,10 @@ public class FeatureConverter {
 
     }
 
-    public FeatureConverter(String[] headers, ArrayList<String>[] lines){
+    public FeatureConverter(String[] headers, String[][] lines){
 
-        if (headers.length !=lines.length)
-            throw new IllegalArgumentException("Mismatch of sizes between arrays!");
-        if (isEmpty(lines))
-            throw new EmptyRuleException();
+        //if (headers.length != lines[0].length)
+            //throw new IllegalArgumentException("Mismatch of sizes between arrays!");
 
         this.dimension = headers.length;
 
@@ -40,11 +36,11 @@ public class FeatureConverter {
 
     }
 
-    private boolean isEmpty(ArrayList<String>[] lines){
+    private boolean isEmpty(String[][] lines){
 
-        for (ArrayList<String> line : lines) {
+        for (String[] line : lines) {
 
-            if (!((line.isEmpty()) || isEmptyLine(line))) {
+            if (!(isEmptyLine(line))) {
                 return false;
             }
         }
@@ -52,7 +48,7 @@ public class FeatureConverter {
         return true;
     }
 
-    private boolean isEmptyLine(ArrayList<String> line){
+    private boolean isEmptyLine(String[] line){
 
         for (String s: line) {
 
@@ -63,16 +59,16 @@ public class FeatureConverter {
         return true;
     }
 
-    public byte[][] encode(ArrayList<String>[] lines){
+    public byte[][] encode(String[][] lines){
 
-        if (featureHeaders.length !=lines.length)
-            throw new IllegalArgumentException("Mismatch of sizes");
+        //if (featureHeaders.length != lines[0].length)
+            //throw new IllegalArgumentException("Mismatch of sizes");
         if (isEmpty(lines))
             throw new EmptyRuleException();
 
-        byte[][] res = new byte[lines.length][];
+        byte[][] res = new byte[dimension][];
 
-        for (int i = 0; i < lines.length; i++) {
+        for (int i = 0; i < dimension; i++) {
 
             res[i] = numerators[i].encodeLine(lines[i]);
         }
@@ -80,12 +76,11 @@ public class FeatureConverter {
         return res;
     }
 
-    @SuppressWarnings("unchecked")
-    public ArrayList<String>[] decode(byte[][] numbers){
+    public String[][] decode(byte[][] numbers){
 
-        ArrayList<String>[] lines = new ArrayList[featureHeaders.length];
+        String[][] lines = new String[dimension][];
 
-        for (int i = 0; i < lines.length; i++) {
+        for (int i = 0; i < dimension; i++) {
 
             lines[i] = numerators[i].decodeLine(numbers[i]);
         }
